@@ -3,7 +3,6 @@ import { connect } from 'dva';
 import { Row, Col, Progress } from 'antd';
 import styles from './PowerModal.less';
 
-
 class PowerModal extends Component {
   constructor(props) {
     super(props);
@@ -24,23 +23,24 @@ class PowerModal extends Component {
   }
   render() {
     const { children } = this.props;
+    const { visible } = this.props;
     // const { type } = this.props;
     return (
-      <div className={styles.modal} visible={this.state.visible}>
+      <div className={styles.modal} style={{ visible: this.state.visible }}>
         <span onClick={this.showModalHandler}>
           { children }
         </span>
         <div className={styles.mask}>
           <Row type="flex" justify="space-around" align="middle" style={{ height: '100%', width: '60%', margin: '0 auto' }}>
             <Col span={4}>
-              <Progress type="circle" width="180px" strokeWidth="4" percent={0} format={percent => '重启'} />
+              <Progress type="circle" width={180} strokeWidth={4} percent={0} format={percent => `${(percent / 100 * 60)} 秒重启`} />
             </Col>
             <Col span={4}>
-              <Progress type="circle" width="180px" strokeWidth="4" percent={75} format={percent => `${(percent / 100 * 60)} 秒 关机`} />
+              <Progress type="circle" width={180} strokeWidth={4} percent={75} format={percent => `${(percent / 100 * 60)} 秒 关机`} />
             </Col>
             <Col span={4}>
               <a onClick={this.hideModalHandler}>
-                <Progress type="circle" width="180px" strokeWidth="4" percent={0} format={() => '取消'} onClick={this.hideModalHandler} />
+                <Progress type="circle" width={180} strokeWidth={4} percent={0} format={() => '取消'} onClick={this.hideModalHandler} />
               </a>
             </Col>
           </Row>
@@ -49,8 +49,12 @@ class PowerModal extends Component {
     );
   }
 }
-function mapStateToProps() {
-  return {};
+function mapStateToProps(state) {
+  const { visible, type } = state.login;
+  return {
+    visible,
+    type,
+  };
 }
 
 export default connect(mapStateToProps)(PowerModal);

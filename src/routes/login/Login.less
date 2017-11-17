@@ -1,61 +1,62 @@
-.normal{
+.login{
   position: relative;
   width: 100vm;
   height: 100vh;
-}
-.form {
-  width: 462px;
-  height: 572px;
-  margin: 0 auto;
-  padding-top: 10vh;
+  .form {
+    width: 462px;
+    height: 572px;
+    margin: 0 auto;
+    padding-top: 10vh;
 
-  button {
-    width: 100%;
+    button {
+      width: 100%;
+    }
+
+    .checkboxRow {
+      margin-top: -4px;
+      margin-bottom: 20px;
+      color: #D8D8D8;
+      .ant-checkbox-inner {background: transparent;}
+    }
   }
 
-  .checkboxRow {
-    margin-top: -4px;
-    margin-bottom: 20px;
-    color: #D8D8D8;
-    .ant-checkbox-inner {background: transparent;}
+  .logo {
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 60px;
+
+    img {
+      width: 212px;
+    }
+  }
+
+  .copy {
+    color: #C3C3C3;
+    font-size: 12px;
+    position: absolute;
+    left: 50%;
+    bottom: 25px;
+    margin-left: -181px;
+  }
+
+  .operations {
+    position: absolute;
+    right: 50px;
+    bottom: 20px;
+    .config {
+      color: #E5E5E5;
+      margin-left: 20px;
+      padding-left: 20px;
+      border-left: 1px solid #505076;
+    }
+    .power {
+      background-color: #3D3D6A;
+    }
+  }
+
+  .ant-spin-container,
+  .ant-spin-nested-loading {
+    height: 100%;
   }
 }
 
-.logo {
-  text-align: center;
-  cursor: pointer;
-  margin-bottom: 60px;
-
-  img {
-    width: 212px;
-  }
-}
-
-.copy {
-  color: #C3C3C3;
-  font-size: 12px;
-  position: absolute;
-  left: 50%;
-  bottom: 25px;
-  margin-left: -181px;
-}
-
-.operations {
-  position: absolute;
-  right: 50px;
-  bottom: 20px;
-  .config {
-    color: #E5E5E5;
-    margin-left: 20px;
-    padding-left: 20px;
-    border-left: 1px solid #505076;
-  }
-  .power {
-    background-color: #3D3D6A;
-  }
-}
-
-.ant-spin-container,
-.ant-spin-nested-loading {
-  height: 100%;
-}

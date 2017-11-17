@@ -1,18 +1,44 @@
 import React from 'react';
-import { Router, Route, Switch } from 'dva/router';
-import IndexPage from './routes/IndexPage';
-import Users from './routes/Users/Users';
-import Login from './routes/login/Login';
+import { Switch, Route, Redirect, routerRedux } from 'dva/router';
+import dynamic from 'dva/dynamic';
+import App from './routes/app';
 
-function RouterConfig({ history }) {
+const { ConnectedRouter } = routerRedux;
+function RouterConfig({ history, app }) {
+  const error = dynamic({
+    app,
+    component: () => import('./routes/Error/error'),
+  });
+  const routes = [
+    {
+      path: '/login',
+      key: 'login',
+      models: () => [import('./models/login')],
+      component: () => import('./routes/login/Login'),
+    },
+  ];
   return (
-    <Router history={history}>
-      <Switch>
-        <Route path="/" exact component={IndexPage} />
-        <Route path="/users" component={Users} />
-        <Route path="/login" component={Login} />
-      </Switch>
-    </Router>
+    <ConnectedRouter history={history}>
+      <App>
+        <Switch>
+          <Route exact path="/" render={() => (<Redirect to="/login" />)} />
+          {
+            routes.map(({ path, ...dynamics }, key) => (
+              <Route
+                key={key}
+                exact
+                path={path}
+                component={dynamic({
+                  app,
+                  ...dynamics,
+                })}
+              />
+            ))
+          }
+          <Route component={error} />
+        </Switch>
+      </App>
+    </ConnectedRouter>
   );
 }
 

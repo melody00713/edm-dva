@@ -23,4 +23,5 @@
     }
   },
   "theme": "./theme.js"
+  //"disableCSSModules": true
 }
