@@ -18,8 +18,6 @@ const app = dva({
 
 // 3. Model
 app.model(require('./models/app'));
-// app.model(require('./models/login'));
-// app.model(require('./models/example'));
 
 // 4. Router
 app.router(require('./router'));

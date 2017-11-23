@@ -1,0 +1,157 @@
+.graphicalCard {
+  border:1px solid #C8C8C8;
+  text-align: left;
+  position: relative;
+  &:hover {
+    box-shadow: 0 2px 5px 1px rgba(135,147,167,0.40);
+  }
+  &.checked {
+    .graphicalContent .cardCheckIcon {
+      display: block;
+    }
+  }
+  .graphicalContent {
+    height: 240px;
+    position: relative;
+    background-image: url("../../../assets/images/vmBG1.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    .cardCheckIcon {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 20px;
+      color: #00BB7F;
+      background: #ffffff;
+      border-radius: 50%;
+      display: none;
+      z-index: 99;
+    }
+    .graphicalMessage {
+      width: 100%;
+      height: 80px;
+      background: linear-gradient(rgba(33, 38, 39, .5), rgba(14, 16, 17, .8));
+      position: absolute;
+      bottom: 0;
+      color: #fff;
+      transition: height 0.2s;
+      padding:15px 20px;
+      overflow: hidden;
+      .messageBasic{
+        display: table-row;
+        height: 100%;
+        box-sizing: border-box;
+        .osImage {
+          display: table-cell;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: #F5F8FA;
+          background-image: url("../../../assets/images/linux.png");
+          background-repeat: no-repeat;
+          background-position: center;
+        }
+        .name {
+          margin-left: 16px;
+          line-height: 24px;
+          p + p{
+            color: #D9D9D9;
+          }
+        }
+      }
+      .messageDetail{
+        display: none;
+        height: 100%;
+        box-sizing: border-box;
+        p {
+          line-height: 28px;
+          font-size: 12px;
+          span:first-child {
+            display: inline-block;
+            width: 70px;
+            text-align: right;
+            padding-right: 10px;
+          }
+          span + span {
+            color: #5AAAFA;
+            font-size: 14px;
+          }
+        }
+      }
+      &:hover{
+        height: 100%;
+        transition: height 0.2s;
+        padding: 15px 28px;
+        .messageBasic {
+          display: none;
+        }
+        .messageDetail{
+          display: block;
+        }
+      }
+    }
+    .osIcon {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      background: url("../../../assets/images/linux.png") no-repeat 0 0 ;
+      background-size: contain;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    .status {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #FF6C60;
+      margin-right: 8px;
+      &.off {
+        background-color: #FF6C60;
+      }
+      &.on {
+        background-color: #00BB7F;
+      }
+    }
+  }
+  .graphicalOperation {
+    height: 60px;
+    background-color: #fff;
+    padding: 18px 20px;
+    font-size: 20px;
+    vertical-align: middle;
+    position: relative;
+    i {
+      cursor: pointer;
+    }
+    i + i {
+      margin-left: 34px;
+    }
+    .operationRight {
+      position: absolute;
+      right: 20px;
+      i {
+        font-size: 24px;
+      }
+    }
+  }
+  :global {
+    .ant-spin-dot i {
+      background: #ffffff;
+    }
+    .ant-spin-nested-loading > div > .ant-spin .ant-spin-text{
+      padding-top: 12px;
+    }
+    .ant-spin {
+      color: #ffffff;
+    }
+    .ant-spin-blur {
+      opacity: 1;
+      &::after{
+        background: #0F212E;
+        opacity: .75;
+      }
+    }
+  }
+}

@@ -24,7 +24,7 @@ class LoginForm extends Component {
     const { username, password, domain, remeber, autologin} = this.props.loginForm
     
     return (
-      <form>
+      <form className="login_form">
         <FormItem>
           {getFieldDecorator('username', {
             rules: [

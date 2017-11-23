@@ -1,0 +1,41 @@
+.normal {
+  height:100%;
+}
+.operations{
+  float: right;
+  width: 200px;
+  overflow: hidden;
+  text-align: right;
+  :global {
+    .ant-btn > .anticon {
+      font-size: 20px;
+    }
+  }
+}
+:global {
+  .ant-carousel .slick-slider{
+    height: calc(~'100vh - 208px');
+  }
+  .ant-carousel .slick-slide {
+    height: calc(~'100vh - 264px');
+    text-align: center;
+    overflow: hidden;
+  }
+  .ant-carousel .slick-slide > div {
+    height:100%;
+  }
+  .ant-carousel .slick-dots li {
+    margin:0 5px;
+  }
+  .ant-carousel .slick-dots li button {
+    width:12px;
+    height:12px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #2A4E72;
+  }
+  .ant-carousel .slick-dots li.slick-active button {
+    width: 12px;
+    background-color: #2A4E72;
+  }
+}

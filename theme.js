@@ -1,6 +1,6 @@
 module.exports = () => {
   return {
-    'primary-color': '#1161EE',
+    'primary-color': '#5596E6',
     'font-size-base': '14px',
     'input-height-lg': '42px',
     'btn-height-lg': '42px',

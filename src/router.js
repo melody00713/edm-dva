@@ -7,14 +7,20 @@ const { ConnectedRouter } = routerRedux;
 function RouterConfig({ history, app }) {
   const error = dynamic({
     app,
-    component: () => import('./routes/Error/error'),
+    component: () => import('./routes/Error'),
   });
   const routes = [
     {
       path: '/login',
       key: 'login',
       models: () => [import('./models/login')],
-      component: () => import('./routes/login/Login'),
+      component: () => import('./routes/login'),
+    },
+    {
+      path: '/vms',
+      key: 'vms',
+      models: () => [import('./models/vms')],
+      component: () => import('./routes/Vms'),
     },
   ];
   return (
