@@ -43,7 +43,7 @@ class graphicalBox extends Component {
     this.ele = e.target;
     clearTimeout(this.dbClickTimer);
     this.dbClickTimer = setTimeout(() => {
-      if(this.ele.nodeName === 'I' || this.ele.nodeName === 'INPUT') {
+      if(this.ele.nodeName === 'BUTTON' || this.ele.nodeName === 'INPUT') {
         return
       }
       this.setState({
@@ -67,30 +67,30 @@ class graphicalBox extends Component {
                 <div className={styles.osImage} />
                 <div className={styles.name}>
                   <p>{data.name}</p>
-                  <p><i className={`${styles.status} + ' ' + ${styles.on}`} />开机</p>
+                  <p><i className={`${styles.status} + ' ' + ${styles[data.status]}`} />{data.status === 'on' ? '开机' : '关机'}</p>
                 </div>
               </div>
               <div className={styles.messageDetail}>
                 <p><span>名称 :</span><span>desktop-003</span></p>
-                <p><span>操作系统 :</span><span><i className={styles.osIcon} />windows8</span></p>
-                <p><span>状态 :</span><span><i className={`${styles.status} + ' ' + ${styles.on}`} />开机</span></p>
-                <p><span>IP地址 :</span><span>192.168.1.1</span></p>
-                <p><span>CPU :</span><span>2 核</span></p>
-                <p><span>内存 :</span><span>4 GB</span></p>
-                <p><span>Mac地址 :</span><span>44-45-53-54-00-00</span></p>
-                <p><span>磁盘 :</span><span>1 GB已用／总量4 GB</span></p>
+                <p><span>操作系统 :</span><span><i className={styles.osIcon} />{data.os}</span></p>
+                <p><span>状态 :</span><span><i className={`${styles.status} + ' ' + ${styles[data.status]}`} />{data.status === 'on' ? '开机' : '关机'}</span></p>
+                <p><span>IP地址 :</span><span>{data.ip}</span></p>
+                <p><span>CPU :</span><span>{data.cpu}</span></p>
+                <p><span>内存 :</span><span>{data.memory}</span></p>
+                <p><span>Mac地址 :</span><span>{data.mac}</span></p>
+                <p><span>磁盘 :</span><span>{data.diskused}已用／总量{data.diskall}</span></p>
               </div>
             </div>
           </div>
           <div className={styles.graphicalOperation}>
             <Tooltip placement="top" title="开机">
-              <Icon type="caret-right" onClick={this.operationHandler.bind(null,'on')}/>
+              <Button type="primary" disabled ghost onClick={this.operationHandler.bind(null,'on')}><Icon type="caret-right"/></Button>
             </Tooltip>
             <Tooltip placement="top" title="关机">
-              <Icon type="poweroff" onClick={this.operationHandler.bind(null,'off')}/>
+              <Button type="primary" ghost onClick={this.operationHandler.bind(null,'off')}><Icon type="poweroff"/></Button>
             </Tooltip>
             <Tooltip placement="top" title="重启">
-              <Icon type="reload" onClick={this.operationHandler.bind(null,'reboot')}/>
+              <Button type="primary" ghost onClick={this.operationHandler.bind(null,'reboot')}><Icon type="reload"/></Button>
             </Tooltip>
             <Tooltip placement="top" title="选择图片">
               <Upload className={styles.operationRight}>

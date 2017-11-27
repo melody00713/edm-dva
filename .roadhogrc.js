@@ -1,5 +1,6 @@
 export default {
   "entry": "src/index.js",
+  "publicPath": "/",
   "env": {
     "development": {
       "extraBabelPlugins": [
@@ -7,13 +8,13 @@ export default {
         "transform-runtime",
         ["import", { "libraryName": "antd", "style": true }]
       ],
-      "proxy": {
-        "/api": {
-          "target": "http://jsonplaceholder.typicode.com/",
-          "changeOrigin": true,
-          "pathRewrite": { "^/api" : "" }
-        }
-      }
+      // "proxy": {
+      //   "/api": {
+      //     "target": "http://jsonplaceholder.typicode.com/",
+      //     "changeOrigin": true,
+      //     "pathRewrite": { "^/api" : "" }
+      //   }
+      // }
     },
     "production": {
       "extraBabelPlugins": [

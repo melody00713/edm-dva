@@ -11,22 +11,26 @@ class LoginForm extends Component {
     super(props);
   }
   okHandler = () => {
-    const { onOk } = this.props;
+    const { dispatch } = this.props;
     this.props.form.validateFields((err, values) => {
       if(!err) {
-        onOk(values);
+        dispatch({
+          type: 'login/accountSubmit',
+          payload: values
+        })
       }
     })
   }
   render () {
-    const { getFieldDecorator } = this.props.form;
-    console.log(this.props)
-    const { username, password, domain, remeber, autologin} = this.props.loginForm
+    const {form , login} = this.props
+    const { getFieldDecorator } = form;
+    // const {login} = this.props;
+    // const { username, password, domain, remeber, autologin} = this.props.loginForm
     
     return (
-      <form className="login_form">
+      <form className="login_form" onSubmit={this.okHandler}>
         <FormItem>
-          {getFieldDecorator('username', {
+          {getFieldDecorator('userName', {
             rules: [
               {
                 required: true,
@@ -50,11 +54,11 @@ class LoginForm extends Component {
             rules: [
               {
                 required: true,
-                message: '请选择域'
+                message: '请选择域',
               },
             ],
           })(
-            <Select size="large">
+            <Select size="large"  placeholder="域">
               <Option value="Dev-2-5G">Dva-2-5G</Option>
             </Select>
           )}
@@ -76,7 +80,7 @@ class LoginForm extends Component {
           </Col>
         </Row>
         <Row>
-          <Button type="primary" size="large" onClick={this.okHandler}>
+          <Button loading={login.submitting} type="primary" size="large">
             登录
           </Button>
         </Row>
@@ -85,4 +89,4 @@ class LoginForm extends Component {
   }
 }
 
-export default Form.create()(LoginForm);
+export default connect(({login}) => ({login}))(Form.create()(LoginForm));

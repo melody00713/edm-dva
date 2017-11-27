@@ -1,5 +1,6 @@
 import qs from 'query-string';
-import * as usersService from '../services/users';
+import { queryFakeList } from '../services/api';
+import PAGE_SIZE from '../constants';
 
 export default {
   namespace: 'vms',
@@ -19,39 +20,14 @@ export default {
   },
   effects: {
     // 获取列表数据方法
-    *fetch({ payload: { page = 1 } }, { call, put }) {
-      const { data, headers } = yield call(usersService.fetch, { page });
+    *fetch({ payload: { count = PAGE_SIZE } }, { call, put }) {
+      const data = yield call(queryFakeList, { count });
       yield put({
         type: 'save',
         payload: {
           data,
-          total: parseInt(headers['x-total-count'], 10),
-          page: parseInt(page, 10),
+          count: parseInt(count, 10),
         },
-      });
-    },
-    *remove({ payload: id }, { call, put, select }) {
-      yield call(usersService.remove, id);
-      const page = yield select(state => state.users.page);
-      yield put({
-        type: 'fetch',
-        payload: { page },
-      });
-    },
-    *patch({ payload: { id, values } }, { call, put, select }) {
-      yield call(usersService.patch, id, values);
-      const page = yield select(state => state.users.page);
-      yield put({
-        type: 'fetch',
-        payload: { page },
-      });
-    },
-    *create({ payload: { values } }, { call, put, select }) {
-      yield call(usersService.create, values);
-      const page = yield select(state => state.users.page);
-      yield put({
-        type: 'fetch',
-        payload: { page },
       });
     },
   },

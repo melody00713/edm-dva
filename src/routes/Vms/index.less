@@ -1,11 +1,18 @@
 .normal {
   height:100%;
 }
-.operations{
-  float: right;
+.operation{
+  position: absolute;
+  right:0;
+  top:0;
   width: 200px;
+  //height: 84px;
   overflow: hidden;
   text-align: right;
+  ::after{
+    content: '';
+    clear: both;
+  }
   :global {
     .ant-btn > .anticon {
       font-size: 20px;

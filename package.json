@@ -29,7 +29,9 @@
     "eslint-plugin-react": "^6.8.0",
     "expect": "^1.20.2",
     "husky": "^0.12.0",
+    "mockjs": "^1.0.1-beta3",
     "redbox-react": "^1.4.3",
-    "roadhog": "^1.2.1"
+    "roadhog": "^1.2.1",
+    "roadhog-api-doc": "^0.3.0"
   }
 }

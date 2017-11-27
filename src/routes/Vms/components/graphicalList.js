@@ -8,12 +8,11 @@ import { PAGE_SIZE } from '../../../constants';
 class GraphicalList extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
   }
   render() {
     const { list } = this.props.vms;
     return (
-      <Row type="flex" justify="space-around" align="middle" gutter={23}>
+      <Row type="flex" justify="space-around" gutter={23}>
         {
           list.map((item, index) => {
             return <Col span={8} key={index}><GraphicalBox data={item} index={index} /></Col>;

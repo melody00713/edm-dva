@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Table, Pagination, Popconfirm, Button } from 'antd';
+import { Table, Pagination, Popconfirm, Button, Icon } from 'antd';
 // import { routerRedux } from 'dva/router';
 // import qs from 'query-string';
 import styles from './list.less';
@@ -35,40 +35,57 @@ function VmsList({ dispatch, list: dataSource, total, page: current, loading }) 
       title: '名称',
       dataIndex: 'name',
       key: 'name',
+      render: () => {
+        return 'QA测试机001';
+      },
     },
     {
       title: '操作系统',
       dataIndex: 'phone',
       key: 'phone',
+      render: () => {
+        return (<span><i className={`${styles.osIcon}`} />Ubuntu</span>);
+      },
     },
     {
       title: '状态',
       dataIndex: 'username',
       key: 'username',
+      render: () => {
+        return (<span><i className={`${styles.status} + ' ' + ${styles.on}`} />开机</span>);
+      },
     },
     {
       title: 'CPU（核）',
       dataIndex: 'id',
       key: 'id',
+      render: () => {
+        return '2核';
+      },
     },
     {
       title: '内存（GB）',
       dataIndex: 'email',
       key: 'email',
+      render: () => {
+        return '4GB';
+      },
     },
     {
       title: '创建时间',
       dataIndex: 'website',
       key: 'website',
+      render: () => {
+        return '2018-01-01';
+      },
     },
     {
       title: '操作',
       key: 'operation',
       render: (text, record) => (
         <span className={styles.operation}>
-          <Popconfirm title="Confirm to delete?" onConfirm={deleteHandler.bind(null, record.id)}>
-            <a>Delete</a>
-          </Popconfirm>
+          <Icon type="calculator" style={{fontSize: '20px', cursor: 'pointer'}} />
+          <Icon type="ellipsis" className={styles.ellipse} />
         </span>
       ),
     },
@@ -77,19 +94,11 @@ function VmsList({ dispatch, list: dataSource, total, page: current, loading }) 
   return (
     <div className={styles.normal}>
       <Table
-        bordered
         columns={columns}
         dataSource={dataSource}
         rowKey={record => record.id}
         loading={loading}
         pagination={false}
-      />
-      <Pagination
-        className="ant-table-pagination"
-        total={total}
-        current={current}
-        pageSize={PAGE_SIZE}
-        onChange={pageChangeHandler}
       />
     </div>
   );

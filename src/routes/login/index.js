@@ -27,7 +27,7 @@ const Login = ({ login, app, dispatch }) => {
         <div className={styles.logo}>
           <img alt={'logo'} src={Logo} />
         </div>
-        <LoginForm onOk={okHandler.bind(null, login.loginForm)} loginForm={login.loginForm} />
+        <LoginForm />
       </div>
       <div className={styles.footer}>
         <span className={styles.copy}>&copy;2017 Easted All Rights Reserved 北京易讯通股份有限公司版权所有</span>

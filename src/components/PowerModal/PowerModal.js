@@ -7,7 +7,7 @@ class PowerModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: 60,
+      time: 44,
     };
   }
   hideModalHandler = () => {
@@ -17,11 +17,7 @@ class PowerModal extends Component {
     });
   }
   operationPower = (value) => {
-    console.log(value)
     const { dispatch } = this.props;
-    // this.setState({
-    //   time: 60,
-    // });
     dispatch({
       type: 'app/showPowerModal',
       payload: {
@@ -41,6 +37,17 @@ class PowerModal extends Component {
     //   }, 1000);
     // }
   }
+  calcPercentHandler = (type, percent) => {
+    console.log(type)
+    let _name = type === 'reboot' ? '重启' : '关机';
+    if (type === this.props.powerType) {
+      return (
+        <div style={{ fontSize: '16px'}}><p style={{ fontSize: '34px', marginBottom: '10px' }}>{`${parseInt(percent / 100 * 60)}`}<small style={{ marginLeft: '10px' , fontSize: '18px'}}>s</small></p>{`${_name}`}</div>
+      );
+    } else {
+      return `${_name}`;
+    }
+  }
   render() {
     const { powerVisible, powerType } = this.props;
     return (
@@ -48,10 +55,10 @@ class PowerModal extends Component {
         <div className={styles.powerModalMask}>
           <Row type="flex" justify="space-around" align="middle" style={{ height: '100%', width: '60%', margin: '0 auto' }}>
             <Col span={4}>
-              <Progress type="circle" width={180} strokeWidth={4} percent={this.state.time} format={percent => `${(percent / 100 * 60)} 秒重启`} />
+              <Progress className={powerType === 'reboot' ? 'active' : ''} type="circle" width={180} strokeWidth={4} percent={powerType === 'reboot' ? this.state.time / 60 * 100 : 0} format={this.calcPercentHandler.bind(null, 'reboot')} />
             </Col>
             <Col span={4}>
-              <Progress type="circle" width={180} strokeWidth={4} percent={this.state.time} format={percent => `${(percent / 100 * 60)} 秒 关机`} />
+              <Progress className={powerType === 'off' ? 'active' : ''} type="circle" width={180} strokeWidth={4} percent={powerType === 'off' ? this.state.time / 60 * 100 : 0} format={this.calcPercentHandler.bind(null, 'off')} />
             </Col>
             <Col span={4}>
               <a>

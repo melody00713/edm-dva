@@ -10,3 +10,48 @@
 .operation a {
   margin: 0 .5em;
 }
+
+:global {
+  .ant-table table {
+    border:1px solid rgb(223,227, 230);
+  }
+  .ant-table-tbody > tr:nth-child(odd) {
+    background: #EBF0F7;
+  }
+  .ant-table-tbody > tr:nth-child(even), .ant-table-thead > tr > th {
+    background: #ffffff;
+  }
+  .ant-table-tbody > tr:hover{
+    background: #EEF6FE;
+  }
+}
+.ellipse {
+  color: #152934;
+  font-size: 20px;
+  transform: rotate(90deg);
+  cursor: pointer;
+  margin-left: 16px;
+}
+.osIcon {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background: url("../../../assets/images/linux.png") no-repeat 0 0 ;
+  background-size: contain;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+.status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #FF6C60;
+  margin-right: 8px;
+  &.off {
+    background-color: #FF6C60;
+  }
+  &.on {
+    background-color: #00BB7F;
+  }
+}

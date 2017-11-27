@@ -1,7 +1,6 @@
 .graphicalCard {
   border:1px solid #C8C8C8;
   text-align: left;
-  position: relative;
   &:hover {
     box-shadow: 0 2px 5px 1px rgba(135,147,167,0.40);
   }
@@ -65,7 +64,7 @@
         height: 100%;
         box-sizing: border-box;
         p {
-          line-height: 28px;
+          line-height: 26px;
           font-size: 12px;
           span:first-child {
             display: inline-block;
@@ -118,10 +117,20 @@
   .graphicalOperation {
     height: 60px;
     background-color: #fff;
-    padding: 18px 20px;
+    padding: 18px 0;
     font-size: 20px;
     vertical-align: middle;
     position: relative;
+    :global {
+      .ant-btn{
+        border-color: transparent !important;
+        color: rgba(0, 0, 0, 0.65);
+        font-size: 24px;
+      }
+      .ant-btn-background-ghost.ant-btn-primary.disabled, .ant-btn-background-ghost.ant-btn-primary[disabled], .ant-btn-background-ghost.ant-btn-primary.disabled:hover, .ant-btn-background-ghost.ant-btn-primary[disabled]:hover, .ant-btn-background-ghost.ant-btn-primary.disabled:focus, .ant-btn-background-ghost.ant-btn-primary[disabled]:focus, .ant-btn-background-ghost.ant-btn-primary.disabled:active, .ant-btn-background-ghost.ant-btn-primary[disabled]:active, .ant-btn-background-ghost.ant-btn-primary.disabled.active, .ant-btn-background-ghost.ant-btn-primary[disabled].active {
+        color: rgba(0, 0, 0, 0.25);
+      }
+    }
     i {
       cursor: pointer;
     }

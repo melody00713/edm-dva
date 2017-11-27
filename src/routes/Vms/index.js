@@ -6,10 +6,9 @@ import VmBox from './components/vmBox';
 
 const ButtonGroup = Button.Group;
 function Vms({ vms, dispatch }) {
-  function pageChangeHandler(page) {
+  function pageChangeHandler() {
     dispatch({
       type: 'vms/fetch',
-      payload: { page },
     });
   }
   function toggleListLayoutHandler() {
@@ -22,9 +21,9 @@ function Vms({ vms, dispatch }) {
   }
   return (
     <div className={styles.normal}>
-      <Row style={{ height: '84px', lineHeight: '84px' }}>
-        <span style={{ fontSize: '20px' }}>桌面列表 <span style={{ color: '#b7b7b7' }}>({vms.total}台)</span> </span>
-        <div className={styles.operations}>
+      <Row style={{ height: '84px', lineHeight: '84px' ,position: 'relative'}}>
+        <span style={{ fontSize: '20px' }}>桌面列表 <span style={{ color: '#b7b7b7' }}>(3台)</span> </span>
+        <div className={styles.operation}>
           <ButtonGroup size="large">
             <Button icon="reload" />
             <Button type="primary" icon="caret-right" />

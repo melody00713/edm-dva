@@ -14,10 +14,13 @@ class App extends Component {
   constructor(props) {
     super(props);
   }
-  selectPowerHandler = () => {
+  selectPowerHandler = (value) => {
     const { dispatch } = this.props;
     dispatch({
       type: 'app/showPowerModal',
+      payload: {
+        powerType: value,
+      },
     });
   }
   render() {
