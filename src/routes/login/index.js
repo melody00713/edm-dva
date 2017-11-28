@@ -32,14 +32,13 @@ const Login = ({ login, app, dispatch }) => {
       <div className={styles.footer}>
         <span className={styles.copy}>&copy;2017 Easted All Rights Reserved 北京易讯通股份有限公司版权所有</span>
         <div className={styles.operations}>
-          <Select defaultValue="off" style={{ width: 88 }} onSelect={selectPowerHandler}>
-            <Option value="off"><Icon type="poweroff" />关机</Option>
-            <Option value="reboot"><Icon type="reload" />重启</Option>
+          <Select defaultValue="1" style={{ width: 88 }} onSelect={selectPowerHandler}>
+            <Option value="1"><Icon type="poweroff" />关机</Option>
+            <Option value="2"><Icon type="reload" />重启</Option>
           </Select>
           <a className={styles.config}>系统配置</a>
         </div>
       </div>
-      <PowerModal powerVisible={app.powerVisible} powerType={app.powerType} />
     </div>
   );
 };

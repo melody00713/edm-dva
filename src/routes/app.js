@@ -43,9 +43,9 @@ class App extends Component {
                 <Header className={styles.header}>
                   <div className={styles.logo} />
                   <div className={styles.powerOperations}>
-                    <Select defaultValue="off" style={{ width: 88 }} onSelect={this.selectPowerHandler}>
-                      <Option value="off"><Icon type="poweroff" />关机</Option>
-                      <Option value="reboot"><Icon type="reload" />重启</Option>
+                    <Select defaultValue="1" style={{ width: 88 }} onSelect={this.selectPowerHandler}>
+                      <Option value="1"><Icon type="poweroff" />关机</Option>
+                      <Option value="2"><Icon type="reload" />重启</Option>
                     </Select>
                     <Popover placement="bottomRight" content={content} trigger="click" arrowPointAtCenter>
                       <Icon type="ellipsis" className={styles.ellipse} />
