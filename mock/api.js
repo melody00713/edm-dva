@@ -26,13 +26,14 @@ export function fakeList(count) {
       id: Math.ceil(Math.random() * 100000) + 100000,
       name: name[i % 10],
       os: os[i % 3],
-      status: [i % 2 === 0] ? 'on' : 'off',
+      status: i % 2 === 0 ? 'on' : 'off',
       ip: '10.10.139.13',
       cpu: '2 核',
       memory: '4 GB',
       mac: '44-45-53-54-00-00',
       diskused: '1 GB',
       diskall: '4 GB',
+      createtime: new Date(),
     });
   }
 

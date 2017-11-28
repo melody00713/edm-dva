@@ -51,7 +51,7 @@ class PowerModal extends Component {
   render() {
     const { powerVisible, powerType } = this.props;
     return (
-      <div className={styles.powerModal} style={{ visibility: powerVisible === false ? 'hidden': 'visible' }}>
+      <div className={`${styles.powerModal + (powerVisible === true ? 'active': '')}`}>
         <div className={styles.powerModalMask}>
           <Row type="flex" justify="space-around" align="middle" style={{ height: '100%', width: '60%', margin: '0 auto' }}>
             <Col span={4}>

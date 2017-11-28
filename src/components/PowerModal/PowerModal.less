@@ -2,6 +2,13 @@
 .powerModal {
   //display: inline-block;
   //visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    transition: all 2s;
+  }
 }
 .powerModalMask {
   //display: none;

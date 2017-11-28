@@ -10,7 +10,8 @@ class LoginForm extends Component {
   constructor(props) {
     super(props);
   }
-  okHandler = () => {
+  okHandler = (e) => {
+    e.preventDefault();
     const { dispatch } = this.props;
     this.props.form.validateFields((err, values) => {
       if(!err) {
@@ -80,7 +81,7 @@ class LoginForm extends Component {
           </Col>
         </Row>
         <Row>
-          <Button loading={login.submitting} type="primary" size="large">
+          <Button loading={login.submitting} type="primary" size="large" htmlType="submit">
             登录
           </Button>
         </Row>

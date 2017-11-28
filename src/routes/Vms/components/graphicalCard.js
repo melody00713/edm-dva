@@ -43,7 +43,7 @@ class graphicalBox extends Component {
     this.ele = e.target;
     clearTimeout(this.dbClickTimer);
     this.dbClickTimer = setTimeout(() => {
-      if(this.ele.nodeName === 'BUTTON' || this.ele.nodeName === 'INPUT') {
+      if(this.ele.nodeName === 'BUTTON' || this.ele.nodeName === 'INPUT' || this.ele.nodeName === 'I') {
         return
       }
       this.setState({
@@ -84,13 +84,13 @@ class graphicalBox extends Component {
           </div>
           <div className={styles.graphicalOperation}>
             <Tooltip placement="top" title="开机">
-              <Button type="primary" disabled ghost onClick={this.operationHandler.bind(null,'on')}><Icon type="caret-right"/></Button>
+              <Button type="primary" disabled={data.status === 'on' ? 'disabled' : false} ghost onClick={this.operationHandler.bind(null,'on')}><Icon type="caret-right"/></Button>
             </Tooltip>
             <Tooltip placement="top" title="关机">
-              <Button type="primary" ghost onClick={this.operationHandler.bind(null,'off')}><Icon type="poweroff"/></Button>
+              <Button type="primary" disabled={data.status === 'off' ? 'disabled' : false} ghost onClick={this.operationHandler.bind(null,'off')}><Icon type="poweroff"/></Button>
             </Tooltip>
             <Tooltip placement="top" title="重启">
-              <Button type="primary" ghost onClick={this.operationHandler.bind(null,'reboot')}><Icon type="reload"/></Button>
+              <Button type="primary" disabled={data.status === 'off' ? 'disabled' : false} ghost onClick={this.operationHandler.bind(null,'reboot')}><Icon type="reload"/></Button>
             </Tooltip>
             <Tooltip placement="top" title="选择图片">
               <Upload className={styles.operationRight}>
