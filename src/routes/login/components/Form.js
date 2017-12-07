@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Row, Col, Input, Select, Checkbox, Button, Icon } from 'antd';
+import { Form, Row, Col, Input, Select, Checkbox, Button, Icon, message} from 'antd';
 import { connect } from 'dva';
+import { routerRedux, Link } from 'dva/router';
 import styles from './Form.less';
 
 const FormItem = Form.Item;
@@ -9,6 +10,18 @@ const Option = Select.Option;
 class LoginForm extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      status: undefined
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.login.status === 'ok') {
+      this.props.dispatch(routerRedux.push('/vms'));
+    }
+    if (nextProps.login.status !== this.state.status && nextProps.login.status === 'error') {
+      message.error('登录失败');
+    }
+    this.state.status = nextProps.login.status
   }
   okHandler = (e) => {
     e.preventDefault();
@@ -60,7 +73,11 @@ class LoginForm extends Component {
             ],
           })(
             <Select size="large"  placeholder="域">
-              <Option value="Dev-2-5G">Dva-2-5G</Option>
+              {
+                login.domainList.map((item) => {
+                  return (<Option key={item} value={item}>{item}</Option>)
+                })
+              }
             </Select>
           )}
         </FormItem>

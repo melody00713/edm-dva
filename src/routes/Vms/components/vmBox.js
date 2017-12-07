@@ -13,10 +13,10 @@ class VmList extends Component {
     return (
       <div style={{ height: '100%' }}>
         <div style={{ display: !vms.toggleListLayout ? 'block' : 'none', height: '100%' }}>
-          <GraphicalListComponent />
+          <GraphicalListComponent list={this.props.list} />
         </div>
         <div style={{ display: vms.toggleListLayout ? 'block' : 'none' }}>
-          <ListComponent />
+          <ListComponent list={this.props.list} />
         </div>
       </div>
     );

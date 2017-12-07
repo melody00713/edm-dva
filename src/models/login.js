@@ -1,12 +1,21 @@
 import { routerRedux } from 'dva/router';
-import { fakeAccountLogin } from '../services/api';
+import { fakeAccountLogin, queryFakeDomainList } from '../services/api';
 
 export default {
   namespace: 'login',
   state: {
     status: undefined,
+    domainList: [],
+    account: null,
   },
   effects: {
+    *getDomainList(_, { call, put }) {
+      const response = yield call(queryFakeDomainList);
+      yield put({
+        type: 'setDomainList',
+        payload: response,
+      });
+    },
     *accountSubmit({ payload }, { call, put }) {
       yield put({
         type: 'changeSubmitting',
@@ -21,10 +30,6 @@ export default {
         type: 'changeSubmitting',
         payload: false,
       });
-      const { status } = response;
-      if (status === 'ok') {
-        yield put(routerRedux.push('/vms'));
-      }
     },
     *logout(_, { put }) {
       yield put({
@@ -41,13 +46,19 @@ export default {
       return {
         ...state,
         status: payload.status,
-        type: payload.type,
+        account: payload.account,
       };
     },
     changeSubmitting(state, { payload }) {
       return {
         ...state,
         submitting: payload,
+      };
+    },
+    setDomainList(state, { payload }) {
+      return {
+        ...state,
+        domainList: payload,
       };
     },
   },

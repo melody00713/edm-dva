@@ -85,13 +85,17 @@
     .rightcircle{
       border-top:6px solid @cricle-border-highlight-color;
       border-right:6px solid @cricle-border-highlight-color;
-      animation: circleProgressLoad_right 60s linear;
+      animation-name: circleProgressLoad_right;
+      animation-duration: 60s;
+      animation-timing-function: linear;
       animation-fill-mode: forwards;
     }
     .leftcircle {
       border-bottom:6px solid @cricle-border-highlight-color;
       border-left:6px solid @cricle-border-highlight-color;
-      animation: circleProgressLoad_left 60s linear;
+      animation-name: circleProgressLoad_left;
+      animation-duration: 60s;
+      animation-timing-function: linear;
       animation-fill-mode: forwards;
     }
     .circleProgress_wrapper::after {

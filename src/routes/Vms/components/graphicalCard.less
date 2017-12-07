@@ -1,8 +1,22 @@
 .graphicalCard {
   border:1px solid #C8C8C8;
   text-align: left;
+  padding-top: 54%;
+  height: 0;
+  position: relative;
+  transition: transform .3s cubic-bezier(.215,.61,.355,1),box-shadow .3s cubic-bezier(.215,.61,.355,1),-webkit-transform .3s cubic-bezier(.215,.61,.355,1);
+  :global {
+    .ant-spin-nested-loading {
+      position: absolute;
+      top:0; right:0; bottom: 0; left:0;
+      .ant-spin-container {
+        height: 100%;
+      }
+    }
+  }
   &:hover {
-    box-shadow: 0 2px 5px 1px rgba(135,147,167,0.40);
+    box-shadow: 0 5px 10px rgba(0,0,0,.15);
+    transform: translateY(-4px);
   }
   &.checked {
     .graphicalContent .cardCheckIcon {
@@ -10,7 +24,7 @@
     }
   }
   .graphicalContent {
-    height: 240px;
+    height: calc(~'100% - 60px');
     position: relative;
     background-image: url("../../../assets/images/vmBG1.jpeg");
     background-repeat: no-repeat;
@@ -64,17 +78,24 @@
         height: 100%;
         box-sizing: border-box;
         p {
-          line-height: 26px;
+          height: calc(~'100% / 8');
+          min-height: 20px;
           font-size: 12px;
+          //display: table;
           span:first-child {
             display: inline-block;
-            width: 70px;
+            width: 15%;
+            min-width: 70px;
             text-align: right;
             padding-right: 10px;
+            //display: table-cell;
+            //vertical-align: middle;
           }
           span + span {
             color: #5AAAFA;
             font-size: 14px;
+            //display: table-cell;
+            //vertical-align: middle;
           }
         }
       }

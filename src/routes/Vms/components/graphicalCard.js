@@ -60,7 +60,7 @@ class graphicalBox extends Component {
     return (
       <div onClick={this.checkCardHandler} onDoubleClick={this.dbClickHandler} className={`${styles.graphicalCard} + ' ' + ${this.state.checked ? styles.checked : ''}`}>
         <Spin tip={this.state.loadingMsg} spinning={this.state.loading}>
-          <div className={styles.graphicalContent} style={{ backgroundImage: `url("${image}")` }}>
+          <div className={styles.graphicalContent} style={{ backgroundImage: `url("${image}")`, height: 'calc(~"100vh - 300px")'}}>
             <Icon type="check-circle" className={styles.cardCheckIcon} />
             <div className={styles.graphicalMessage}>
               <div className={styles.messageBasic}>

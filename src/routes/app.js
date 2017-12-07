@@ -24,7 +24,7 @@ class App extends Component {
     });
   }
   render() {
-    const {children, dispatch, app, loading, location} = this.props;
+    const { children, app, location } = this.props;
     let pathName = location.pathname;
     pathName = pathName.startsWith('/') ? pathName : `/${pathName}`;
     const content = (
@@ -36,7 +36,7 @@ class App extends Component {
     );
     return (
       <div>
-        <div style={{ filter: `${app.powerVisible ? 'blur(12px)' : 'none'}`, height: '100vh' }}>
+        <div style={{ height: '100vh' }} className={`${styles.root} ${app.powerVisible ? styles.blur : ''}`}>
           {
             (pathName === '/login' ? children : (
               <Layout className={styles.layout}>
@@ -52,7 +52,7 @@ class App extends Component {
                     </Popover>
                   </div>
                 </Header>
-                <Content style={{ padding: '0 72px' }}>
+                <Content>
                   {children}
                 </Content>
               </Layout>
@@ -66,4 +66,4 @@ class App extends Component {
 }
 
 
-export default withRouter(connect(({ app, loading }) => ({ app, loading }))(App));
+export default withRouter(connect(({ app }) => ({ app }))(App));

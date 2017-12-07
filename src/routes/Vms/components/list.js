@@ -70,21 +70,19 @@ class VmsList extends Component {
         key: 'operation',
         render: (text, record) => (
           <span className={styles.operation}>
-          <Icon type="calculator" style={{fontSize: '20px', cursor: 'pointer'}} />
-          <Icon type="ellipsis" className={styles.ellipse} />
-        </span>
+            <Icon type="calculator" style={{fontSize: '20px', cursor: 'pointer'}} />
+            <Icon type="ellipsis" className={styles.ellipse} />
+          </span>
         ),
       },
     ];
-    const { list } = this.props.vms;
-    const loading = this.props.loading.models.vms;
+    const { list } = this.props;
     return (
       <div className={styles.normal}>
         <Table
           columns={columns}
           dataSource={list}
           rowKey={record => record.id}
-          loading={loading}
           pagination={false}
         />
       </div>

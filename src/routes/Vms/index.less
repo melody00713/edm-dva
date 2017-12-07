@@ -6,7 +6,6 @@
   right:0;
   top:0;
   width: 200px;
-  //height: 84px;
   overflow: hidden;
   text-align: right;
   ::after{
@@ -20,11 +19,14 @@
   }
 }
 :global {
+  .ant-spin-nested-loading > div > .ant-spin {
+    max-height: none;
+  }
   .ant-carousel .slick-slider{
-    height: calc(~'100vh - 208px');
+    height: calc(~'100vh - 168px');
   }
   .ant-carousel .slick-slide {
-    height: calc(~'100vh - 264px');
+    height: calc(~'100vh - 198px');
     text-align: center;
     overflow: hidden;
   }

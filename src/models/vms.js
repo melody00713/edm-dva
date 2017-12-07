@@ -1,14 +1,13 @@
 import qs from 'query-string';
 import { queryFakeList } from '../services/api';
-import PAGE_SIZE from '../constants';
+import { PAGE_SIZE } from '../constants';
 
 export default {
   namespace: 'vms',
   state: {
     list: [],
-    total: null,
-    page: null,
     toggleListLayout: false, // 列表显示方式 false-图形化 true-列表
+    loading: false,
   },
   reducers: {
     setState(state, action) {
@@ -17,26 +16,31 @@ export default {
     save(state, { payload: { data: list, total, page } }) {
       return { ...state, list, total, page };
     },
+    changeLoading(state, action) {
+      return {
+        ...state,
+        loading: action.payload,
+      };
+    },
   },
   effects: {
     // 获取列表数据方法
-    *fetch({ payload: { count = PAGE_SIZE } }, { call, put }) {
-      const data = yield call(queryFakeList, { count });
+    *fetch({ payload }, { call, put }) {
+      yield put({
+        type: 'changeLoading',
+        payload: true,
+      });
+      const data = yield call(queryFakeList, payload);
       yield put({
         type: 'save',
         payload: {
           data,
-          count: parseInt(count, 10),
+          count: parseInt(payload.count, 10),
         },
       });
-    },
-  },
-  subscriptions: {
-    setup({ dispatch, history }) {
-      return history.listen(({ pathname, search }) => {
-        if (pathname === '/vms') {
-          dispatch({ type: 'fetch', payload: qs.parse(search) });
-        }
+      yield put({
+        type: 'changeLoading',
+        payload: false,
       });
     },
   },

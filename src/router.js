@@ -1,7 +1,12 @@
 import React from 'react';
 import { Switch, Route, Redirect, routerRedux } from 'dva/router';
+import { Spin } from 'antd';
 import dynamic from 'dva/dynamic';
 import App from './routes/app';
+
+// dynamic.setDefaultLoadingComponent(() => {
+//   return <Spin size="large" />;
+// });
 
 const { ConnectedRouter } = routerRedux;
 function RouterConfig({ history, app }) {
